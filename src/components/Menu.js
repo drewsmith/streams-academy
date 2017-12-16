@@ -32,8 +32,9 @@ const List = styled.ul`
   padding: 0;
   margin: 0;
   li {
+    font-size: 1.25em;
+    color: #FFFFFF;
     a {
-      font-size: 1.25em;
       text-decoration: none;
       color: #FFFFFF;
       padding: 10px;
