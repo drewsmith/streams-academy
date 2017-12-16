@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Menu from 'react-icons/lib/md/menu'
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -20,8 +21,17 @@ const Title = styled.div`
   text-align: center;
 `
 
-const Header = () => (
+const Hamburger = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`
+
+const Header = ({showMenu}) => (
   <Wrapper>
+    <Hamburger>
+      <Menu color='#FFFFFF' size={32} onClick={showMenu} />
+    </Hamburger>
     <Title>Streams.Academy</Title>
   </Wrapper>
 )
