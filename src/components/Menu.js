@@ -12,6 +12,7 @@ const Nav = styled.div`
   width: 250px;
   box-shadow: 0 2px 8px #000000;
   background: #37474F;
+  animation: 1s ease-out 0s 1 toggleMenu;
 `
 
 const CloseWrapper = styled.div`
