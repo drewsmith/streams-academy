@@ -23,11 +23,31 @@ const CloseWrapper = styled.div`
   cursor: pointer;
 `
 
+const List = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  li {
+    padding: 10px;
+    color: #FFFFFF;
+    font-size: 1.25em;
+    cursor: pointer;
+    :hover {
+      background: #263238;
+    }
+  }
+`
+
 const Menu = ({closeMenu}) => (
   <Nav>
     <CloseWrapper>
       <Cancel color='#B0BEC5' size={24} onClick={closeMenu} />
     </CloseWrapper>
+    <List>
+      <li>Map</li>
+      <li>FlatMap</li>
+      <li>Reduce</li>
+    </List>
   </Nav>
 )
 
