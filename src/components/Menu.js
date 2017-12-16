@@ -45,17 +45,29 @@ const List = styled.ul`
   }
 `
 
+const navLinks = [
+  { display: '.map', path: '/map'},
+  { display: '.flatMap', path: '/map'},
+  { display: '.reduce', path: '/map'},
+  { display: '.forEach', path: '/map'}
+]
+
+const NavList = ({closeMenu}) => (
+  <List>
+    {navLinks.map((link) => (
+      <li>
+        <Link key={link.display} to={link.path} onClick={closeMenu}>{link.display}</Link>
+      </li>
+    ))}
+  </List>
+)
+
 const Menu = ({closeMenu}) => (
   <Nav>
     <CloseWrapper>
       <Cancel color='#B0BEC5' size={24} onClick={closeMenu} />
     </CloseWrapper>
-    <List>
-      <li><Link to='/map' onClick={closeMenu}>.map</Link></li>
-      <li><Link to='/map'>.flatMap</Link></li>
-      <li><Link to='/map'>.reduce</Link></li>
-      <li><Link to='/map'>.forEach</Link></li>
-    </List>
+    <NavList closeMenu={closeMenu} />
   </Nav>
 )
 
