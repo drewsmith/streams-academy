@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Slabo|Amatic+SC|Open+Sans+Condensed:300');
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #263238;
+  color: #B0BEC5;
+  font-size: 1.25em;
+}
+
+.container {
+  margin: 20px;
+  background: #37474F;
+  border-radius: 10px;
+  padding: 20px;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+}
+
+.codeblock {
+  display: flex;
+  flex-direction: row;
+  line-height: 1.5em;
+  background-color: rgba(255, 255, 255, .05);
+  font-size: 1em;
+  margin: 20px;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.linecount {
+  background-color: rgba(255, 255, 255, .15);
+  padding: 0 10px;
+}
+
+.code {
+  flex: 1;
+  padding: 0 10px;
+  color: #FFFFFF;
+}
