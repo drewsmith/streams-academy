@@ -45,9 +45,10 @@ const Menu = ({closeMenu}) => (
       <Cancel color='#B0BEC5' size={24} onClick={closeMenu} />
     </CloseWrapper>
     <List>
-      <li>Map</li>
-      <li>FlatMap</li>
-      <li>Reduce</li>
+      <li>.map</li>
+      <li>.flatMap</li>
+      <li>.reduce</li>
+      <li>.forEach</li>
     </List>
   </Nav>
 )
