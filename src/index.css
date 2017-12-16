@@ -9,6 +9,10 @@ body {
   font-size: 1.25em;
 }
 
+.codewrapper {
+  margin: 20px;
+}
+
 .container {
   margin: 20px;
   background: #37474F;
@@ -31,6 +35,7 @@ body {
 .linecount {
   background-color: rgba(255, 255, 255, .15);
   padding: 0 10px;
+  text-shadow: 1px 1px 1px #000;
 }
 
 .code {

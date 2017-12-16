@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
 import CodeBlock from './CodeBlock'
 
-const code = `Here Be Code
-More Code`
+//import { Container } from '../utils/common'
 
-const MapStream = () => (
-  <CodeBlock code={code} />
-)
+import mapJava from '../snippets/map.java'
+
+class MapStream extends Component {
+  state = {
+    code: null
+  }
+  componentDidMount = () => {
+    fetch(mapJava)
+      .then(response => response.text())
+      .then(code => this.setState({code}))
+  }
+  render() {
+    let { code } = this.state
+    return (
+      <div>
+        <CodeBlock code={code} />
+      </div>
+    )
+  }
+}
 
 export default MapStream

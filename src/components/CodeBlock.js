@@ -1,18 +1,26 @@
-import React from 'react';
+import React from 'react'
+import styled from 'styled-components'
+
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { docco } from 'react-syntax-highlighter/styles/hljs'
+
+const Wrapper = styled.div`
+  padding: 0 20px;
+  margin: 20px;
+  border-radius: 10px;
+`
 
 const CodeBlock = ({code}) => {
-  const lines = code ? code.split(/\r\n|\r|\n/) : []
-  const loc = lines.length
-  console.log(loc)
   return (
-    <div className="codeblock">
-      <div className="linecount">
-        {Array.from(Array(loc).keys()).map((index) => <div>{index + 1}</div>)}
-      </div>
-      <div className="code">
-        {lines.map((line) => <div>{line}</div>)}
-      </div>
-    </div>
+    <Wrapper>
+      <SyntaxHighlighter
+        language='java'
+        style={docco}
+        showLineNumbers={true}
+      >
+        {code || ''}
+      </SyntaxHighlighter>
+    </Wrapper>
   )
 }
 
