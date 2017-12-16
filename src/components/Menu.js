@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+
+import { Link } from 'react-router-dom'
+
 import Cancel from 'react-icons/lib/md/cancel'
 
 const Nav = styled.div`
@@ -12,7 +15,7 @@ const Nav = styled.div`
   width: 250px;
   box-shadow: 0 2px 8px #000000;
   background: #37474F;
-  animation: 1s ease-out 0s 1 toggleMenu;
+  animation: 0.5s ease-out 0s 1 toggleMenu;
 `
 
 const CloseWrapper = styled.div`
@@ -29,12 +32,15 @@ const List = styled.ul`
   padding: 0;
   margin: 0;
   li {
-    padding: 10px;
-    color: #FFFFFF;
-    font-size: 1.25em;
-    cursor: pointer;
-    :hover {
-      background: #263238;
+    a {
+      font-size: 1.25em;
+      text-decoration: none;
+      color: #FFFFFF;
+      padding: 10px;
+      display: block;
+      :hover {
+        background: #263238;
+      }
     }
   }
 `
@@ -45,10 +51,10 @@ const Menu = ({closeMenu}) => (
       <Cancel color='#B0BEC5' size={24} onClick={closeMenu} />
     </CloseWrapper>
     <List>
-      <li>.map</li>
-      <li>.flatMap</li>
-      <li>.reduce</li>
-      <li>.forEach</li>
+      <li><Link to='/map' onClick={closeMenu}>.map</Link></li>
+      <li><Link to='/map'>.flatMap</Link></li>
+      <li><Link to='/map'>.reduce</Link></li>
+      <li><Link to='/map'>.forEach</Link></li>
     </List>
   </Nav>
 )

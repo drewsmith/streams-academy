@@ -1,5 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+
+import { Link } from 'react-router-dom'
+
 import Menu from 'react-icons/lib/md/menu'
 
 const Wrapper = styled.div`
@@ -16,9 +19,12 @@ const Title = styled.div`
   font-weight: 100;
   font-size: 48px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, .75);
-  color: #FFFFFF;
   font-family: 'Amatic SC', sans-serif;
   text-align: center;
+  a {
+    text-decoration: none;
+    color: #FFFFFF;
+  }
 `
 
 const Hamburger = styled.div`
@@ -27,12 +33,12 @@ const Hamburger = styled.div`
   cursor: pointer;
 `
 
-const Header = ({showMenu}) => (
+const Header = ({showMenu, hideMenu}) => (
   <Wrapper>
     <Hamburger>
       <Menu color='#FFFFFF' size={32} onClick={showMenu} />
     </Hamburger>
-    <Title>Streams.Academy</Title>
+    <Title><Link to='/' onClick={hideMenu}>Streams.Academy</Link></Title>
   </Wrapper>
 )
 
