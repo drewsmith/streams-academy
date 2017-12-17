@@ -49,7 +49,7 @@ const List = styled.ul`
 const navLinks = [
   { display: '.map', path: '/map'},
   { display: '.flatMap', path: '/map'},
-  { display: '.reduce', path: '/map'},
+  { display: '.reduce', path: '/reduce'},
   { display: '.forEach', path: '/map'}
 ]
 

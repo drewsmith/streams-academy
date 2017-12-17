@@ -5,6 +5,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Menu from './Menu'
 import Header from './Header'
 import MapStream from './MapStream'
+import ReduceStream from './ReduceStream'
 import Home from './Home'
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
           <Header showMenu={this.toggleMenu} hideMenu={this.hideMenu} />
           <Route exact path="/" component={Home} />
           <Route exact path="/map" component={MapStream} />
+          <Route exact path="/reduce" component={ReduceStream} />
         </div>
       </BrowserRouter>
     );

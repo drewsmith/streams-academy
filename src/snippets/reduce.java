@@ -16,24 +16,18 @@ class Pokemon {
   }
 }
 
-class MapTest {
+class ReduceTest {
   @Test
-  public void shouldGetPokemonNames() {
+  public void shouldGetTotalDamage() {
     List<Pokemon> pokemon = Arrays.asList(
       new Pokemon("Pikachu", 100),
       new Pokemon("Charmander", 80),
       new Pokemon("Snorlax", 75)
     );
 
-    List<String> pokemonNames = pokemon.stream()
+    int totalDamage = pokemon.stream()
       .// your code here
 
-    List<String> expected = Arrays.asList(
-      "Pikachu",
-      "Charmander",
-      "Charzoid"
-    );
-
-    assertThat(pokemonNames, eq(expected));
+    assertThat(pokemonNames, eq(255));
   }
 }

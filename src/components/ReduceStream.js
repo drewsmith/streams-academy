@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import CodeBlock from './CodeBlock'
 import Spinner from 'react-icons/lib/fa/spinner'
 
-import mapJava from '../snippets/map.java'
+import mapJava from '../snippets/reduce.java'
 
 const Wrapper = styled.div`
   text-align: center;
@@ -18,7 +18,7 @@ const Loading = () => (
   </Wrapper>
 )
 
-class MapStream extends Component {
+class ReduceStream extends Component {
   state = {
     code: null,
     loading: false
@@ -39,4 +39,4 @@ class MapStream extends Component {
   }
 }
 
-export default MapStream
+export default ReduceStream
