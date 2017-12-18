@@ -50,7 +50,7 @@ const BtnWrapper = styled.div`
   margin-bottom: 20px;
 `
 
-const Btn = styled.div`
+const Submit = styled.div`
   background: #8BC34A;
   border-bottom: 4px solid #558B2F;
   font-size: 1.5em;
@@ -66,7 +66,29 @@ const Btn = styled.div`
   padding:0 100px;
   line-height: 2em;
   text-transform: uppercase;
-  max-width: 300px;
+  max-width: 250px;
+  display: inline-block;
+`
+
+const Reset = styled.div`
+  background: #B0BEC5;
+  border-bottom: 4px solid #37474F;
+  font-size: 1.5em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+  text-shadow: 2px 1px 1px #558B2F;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  margin-top: 10px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding:0 100px;
+  line-height: 2em;
+  text-transform: uppercase;
+  max-width: 250px;
+  display: inline-block;
+  margin-left: 20px;
 `
 
 const TitleWrapper = styled.div`
@@ -142,11 +164,14 @@ class MapStream extends Component {
           </TitleWrapper>
           <TitleWrapper>
             <h2>Response</h2>
-            <pre className='container' style={{height: '300px'}}>{this.state.response}</pre>
+            <pre className='container' style={{height: '300px', maxHeight: '300px', overflow: 'auto'}}>{this.state.response}</pre>
           </TitleWrapper>
         </AnswerWrapper>
         <BtnWrapper>
-          <Btn onClick={this.handleSubmit}>SUBMIT</Btn>
+          <div>
+            <Submit onClick={this.handleSubmit}>SUBMIT</Submit>
+            <Reset>RESET</Reset>
+          </div>
         </BtnWrapper>
       </div>
     )
