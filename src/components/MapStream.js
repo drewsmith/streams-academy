@@ -30,8 +30,22 @@ const Textarea = styled.textarea`
   border-radius: 10px;
   border: 0;
   color: #FFFFFF;
-  width: 90%;
   min-height: 300px;
+  flex: 1;
+`
+
+const AnswerWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  margin: 20px;
+`
+const BtnWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 `
 
 const Btn = styled.div`
@@ -50,6 +64,7 @@ const Btn = styled.div`
   padding:0 100px;
   line-height: 2em;
   text-transform: uppercase;
+  max-width: 300px;
 `
 
 const Loading = () => (
@@ -62,22 +77,28 @@ class MapStream extends Component {
   state = {
     code: null,
     loading: false,
-    answer: null,
+    answer: '',
     response: null,
   }
   handleChange = (e) => {
     this.setState({
-      e.target.name: e.target.value
+      [e.target.name]: e.target.value
     })
   }
   handleSubmit = () => {
     fetch('http://52.0.204.239:8080/submit/map', {
       headers: {
-        'Content-Type': 'text/plain'
+        'Content-Type': 'text/plain',
+        'Access-Control-Allow-Origin': '*'
       },
       method: 'POST',
       body: this.state.answer
-    }).then(response => this.setState({response}))
+    })
+    .then(response => {
+      console.log(response);
+      return response.text()
+    })
+    .then(response => this.setState({response}))
   }
   componentDidMount = () => {
     this.setState({ loading: true })
@@ -95,11 +116,13 @@ class MapStream extends Component {
     return (
       <div>
         <CodeBlock code={this.state.code} />
-        <textarea value={this.state.answer} onChange={this.handleChange} />
-        <Btn onClick={this.handleSubmit}>SUBMIT</Btn>
-        {response && (
-          <pre>{this.state.response}</pre>
-        )}
+        <AnswerWrapper>
+          <Textarea name='answer' value={this.state.answer} onChange={this.handleChange} />
+          <pre className='container' style={{flex: 1}}>{this.state.response}</pre>
+        </AnswerWrapper>
+        <BtnWrapper>
+          <Btn onClick={this.handleSubmit}>SUBMIT</Btn>
+        </BtnWrapper>
       </div>
     )
   }
