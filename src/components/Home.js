@@ -31,7 +31,7 @@ const Wrapper = styled.div`
 const Home = () => (
   <Wrapper>
     <div className='container'>
-      Here be text
+      Under Construction
     </div>
     <div style={{ display: 'flex', justifyContent: 'center'}}>
       <Btn><Link to='/map'>Get Started</Link></Btn>

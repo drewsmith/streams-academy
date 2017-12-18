@@ -55,9 +55,9 @@ const navLinks = [
 
 const NavList = ({closeMenu}) => (
   <List>
-    {navLinks.map((link) => (
-      <li>
-        <Link key={link.display} to={link.path} onClick={closeMenu}>{link.display}</Link>
+    {navLinks.map((link, index) => (
+      <li key={`li-${index}`}>
+        <Link key={`link-${index}`} to={link.path} onClick={closeMenu}>{link.display}</Link>
       </li>
     ))}
   </List>

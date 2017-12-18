@@ -12,6 +12,28 @@ const Wrapper = styled.div`
   padding: 20px;
 `
 
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+`
+
+const Answer = styled.div`
+  flex: 1;
+  diplay: flex;
+`
+
+const Textarea = styled.textarea`
+  background-color: rgba(0, 0, 0, .15);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  border: 0;
+  color: #FFFFFF;
+  width: 90%;
+  min-height: 300px;
+`
+
 const Loading = () => (
   <Wrapper>
     <Spinner className='spin' color='#8BC34A' size={36} />
@@ -31,11 +53,14 @@ class MapStream extends Component {
         code,
         loading: false
       }))
+      .catch(console.log)
   }
   render() {
     if(this.state.loading) return (<Loading />)
 
-    return (<CodeBlock code={this.state.code} />)
+    return (
+      <CodeBlock code={this.state.code} />
+    )
   }
 }
 
