@@ -9,6 +9,10 @@ body {
   font-size: 1.25em;
 }
 
+textarea {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .codewrapper {
   margin: 20px;
 }

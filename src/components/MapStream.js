@@ -32,6 +32,8 @@ const Textarea = styled.textarea`
   color: #FFFFFF;
   min-height: 300px;
   flex: 1;
+  width: calc(100%-40px);
+  font-size: 1.15em;
 `
 
 const AnswerWrapper = styled.div`
@@ -65,6 +67,23 @@ const Btn = styled.div`
   line-height: 2em;
   text-transform: uppercase;
   max-width: 300px;
+`
+
+const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  flex: 1;
+  h2 {
+    font-size: .9em;
+    font-weight: 100;
+    font-size: 48px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, .75);
+    font-family: 'Amatic SC', sans-serif;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+  }
 `
 
 const Loading = () => (
@@ -117,8 +136,14 @@ class MapStream extends Component {
       <div>
         <CodeBlock code={this.state.code} />
         <AnswerWrapper>
-          <Textarea name='answer' value={this.state.answer} onChange={this.handleChange} />
-          <pre className='container' style={{flex: 1}}>{this.state.response}</pre>
+          <TitleWrapper>
+            <h2>Answer</h2>
+            <Textarea name='answer' value={this.state.answer} onChange={this.handleChange} />
+          </TitleWrapper>
+          <TitleWrapper>
+            <h2>Response</h2>
+            <pre className='container' style={{height: '300px'}}>{this.state.response}</pre>
+          </TitleWrapper>
         </AnswerWrapper>
         <BtnWrapper>
           <Btn onClick={this.handleSubmit}>SUBMIT</Btn>
