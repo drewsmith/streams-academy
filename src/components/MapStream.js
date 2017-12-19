@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import CodeBlock from './CodeBlock'
 import Spinner from 'react-icons/lib/fa/spinner'
 
-import mapJava from '../snippets/map.java'
+import { submitMapAnswer, fetchMapTemplate } from '../utils/api'
 
 const Wrapper = styled.div`
   text-align: center;
@@ -114,6 +114,15 @@ const Loading = () => (
   </Wrapper>
 )
 
+const Actions = ({onSubmit, onReset}) => (
+  <BtnWrapper>
+    <div>
+      <Submit onClick={onSubmit}>SUBMIT</Submit>
+      <Reset onClick={onReset}>RESET</Reset>
+    </div>
+  </BtnWrapper>
+)
+
 class MapStream extends Component {
   state = {
     code: null,
@@ -124,50 +133,42 @@ class MapStream extends Component {
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value })
 
-  handleSubmit = () => {
-    fetch('http://52.0.204.239:8080/submit/map', {
-      headers: {
-        'Content-Type': 'text/plain',
-        'Access-Control-Allow-Origin': '*'
-      },
-      method: 'POST',
-      body: this.state.answer
+  handleReset = () => {
+    this.setState({
+      answer: '',
+      response: null
     })
-    .then(response => response.text())
-    .then(response => this.setState({response}))
   }
+
+  handleSubmit = () => {
+    submitMapAnswer(this.state.answer).then(response => this.setState({response}))
+  }
+
   componentDidMount = () => {
     this.setState({ loading: true })
-    fetch(mapJava)
-      .then(response => response.text())
-      .then(code => this.setState({
-        code,
-        loading: false
-      }))
-      .catch(console.log)
+    fetchMapTemplate().then(code => this.setState({
+      code,
+      loading: false
+    }))
   }
   render() {
-    if(this.state.loading) return (<Loading />)
+    if(this.state.loading) return <Loading />
 
+    let {code, answer, response} = this.state
     return (
       <div>
-        <CodeBlock code={this.state.code} />
+        <CodeBlock code={code} />
         <AnswerWrapper>
           <TitleWrapper>
             <h2>Answer</h2>
-            <Textarea name='answer' value={this.state.answer} onChange={this.handleChange} />
+            <Textarea name='answer' value={answer} onChange={this.handleChange} />
           </TitleWrapper>
           <TitleWrapper>
             <h2>Response</h2>
-            <pre className='container' style={{height: '300px', maxHeight: '300px', overflow: 'auto'}}>{this.state.response}</pre>
+            <pre className='container' style={{height: '300px', maxHeight: '300px', overflow: 'auto'}}>{response}</pre>
           </TitleWrapper>
         </AnswerWrapper>
-        <BtnWrapper>
-          <div>
-            <Submit onClick={this.handleSubmit}>SUBMIT</Submit>
-            <Reset>RESET</Reset>
-          </div>
-        </BtnWrapper>
+        <Actions onSubmit={this.handleSubmit} onReset={this.handleReset} />
       </div>
     )
   }
