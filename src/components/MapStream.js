@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import styled from 'styled-components'
 
+import { FlexRow, FlexCol, Container } from '../utils/common'
+
 import CodeBlock from './CodeBlock'
 import Spinner from 'react-icons/lib/fa/spinner'
 
@@ -10,17 +12,6 @@ import { submitMapAnswer, fetchMapTemplate } from '../utils/api'
 const Wrapper = styled.div`
   text-align: center;
   padding: 20px;
-`
-
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-`
-
-const Answer = styled.div`
-  flex: 1;
-  diplay: flex;
 `
 
 const Textarea = styled.textarea`
@@ -36,23 +27,17 @@ const Textarea = styled.textarea`
   font-size: 1.15em;
 `
 
-const AnswerWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
+const AnswerWrapper = styled(FlexRow)`
   align-content: stretch;
   margin: 20px;
 `
-const BtnWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
+const ActionWrapper = styled(FlexRow)`
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
 `
 
-const Submit = styled.div`
-  background: #8BC34A;
-  border-bottom: 4px solid #558B2F;
+const Button = styled.div`
   font-size: 1.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
   text-shadow: 2px 1px 1px #558B2F;
@@ -68,32 +53,23 @@ const Submit = styled.div`
   text-transform: uppercase;
   max-width: 250px;
   display: inline-block;
+  :hover {
+    border-bottom: 0;
+  }
 `
 
-const Reset = styled.div`
+const Submit = styled(Button)`
+  background: #8BC34A;
+  border-bottom: 4px solid #558B2F;
+`
+
+const Reset = styled(Button)`
   background: #B0BEC5;
   border-bottom: 4px solid #37474F;
-  font-size: 1.5em;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
-  text-shadow: 2px 1px 1px #558B2F;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-  display: block;
-  margin-top: 10px;
-  color: #FFFFFF;
-  text-decoration: none;
-  padding:0 100px;
-  line-height: 2em;
-  text-transform: uppercase;
-  max-width: 250px;
-  display: inline-block;
   margin-left: 20px;
 `
 
-const TitleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+const TitleWrapper = styled(FlexCol)`
   justify-content: stretch;
   flex: 1;
   h2 {
@@ -108,6 +84,12 @@ const TitleWrapper = styled.div`
   }
 `
 
+const Response = styled(Container)`
+  height: 300px;
+  max-height: 300px;
+  overflow: auto;
+`
+
 const Loading = () => (
   <Wrapper>
     <Spinner className='spin' color='#8BC34A' size={36} />
@@ -115,12 +97,10 @@ const Loading = () => (
 )
 
 const Actions = ({onSubmit, onReset}) => (
-  <BtnWrapper>
-    <div>
-      <Submit onClick={onSubmit}>SUBMIT</Submit>
-      <Reset onClick={onReset}>RESET</Reset>
-    </div>
-  </BtnWrapper>
+  <ActionWrapper>
+    <Submit onClick={onSubmit}>SUBMIT</Submit>
+    <Reset onClick={onReset}>RESET</Reset>
+  </ActionWrapper>
 )
 
 class MapStream extends Component {
@@ -128,10 +108,10 @@ class MapStream extends Component {
     code: null,
     loading: false,
     answer: '',
-    response: null,
+    response: null
   }
 
-  handleChange = (e) => this.setState({ [e.target.name]: e.target.value })
+  handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
   handleReset = () => {
     this.setState({
@@ -165,7 +145,7 @@ class MapStream extends Component {
           </TitleWrapper>
           <TitleWrapper>
             <h2>Response</h2>
-            <pre className='container' style={{height: '300px', maxHeight: '300px', overflow: 'auto'}}>{response}</pre>
+            <Response>{response}</Response>
           </TitleWrapper>
         </AnswerWrapper>
         <Actions onSubmit={this.handleSubmit} onReset={this.handleReset} />
