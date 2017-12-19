@@ -121,11 +121,9 @@ class MapStream extends Component {
     answer: '',
     response: null,
   }
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+
+  handleChange = (e) => this.setState({ [e.target.name]: e.target.value })
+
   handleSubmit = () => {
     fetch('http://52.0.204.239:8080/submit/map', {
       headers: {
@@ -135,10 +133,7 @@ class MapStream extends Component {
       method: 'POST',
       body: this.state.answer
     })
-    .then(response => {
-      console.log(response);
-      return response.text()
-    })
+    .then(response => response.text())
     .then(response => this.setState({response}))
   }
   componentDidMount = () => {
