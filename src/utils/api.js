@@ -1,6 +1,10 @@
 import mapJava from '../snippets/map.java'
 
-const apiUrl = 'http://52.0.204.239:8080'
+const isDevelopment = process.env.NODE_ENV === 'development'
+
+const apiUrl = isDevelopment
+  ? 'http://52.0.204.239:8080'
+  : 'http://52.0.204.239:8080'
 
 export const fetchMapTemplate = () => fetch(mapJava).then(response => response.text())
 
