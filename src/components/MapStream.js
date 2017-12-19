@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+import Cancel from 'react-icons/lib/md/cancel'
+import CheckCircle from 'react-icons/lib/md/check-circle'
+
 import styled from 'styled-components'
 
 import {
@@ -99,12 +102,19 @@ const Actions = ({onSubmit, onReset}) => (
   </ActionWrapper>
 )
 
+const styles = {
+  icon: {
+    marginRight: 10
+  }
+}
+
 class MapStream extends Component {
   state = {
     code: null,
     loading: false,
     answer: '',
-    response: null
+    response: null,
+    status: null
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
@@ -112,13 +122,17 @@ class MapStream extends Component {
   handleReset = () => {
     this.setState({
       answer: '',
-      response: null
+      response: null,
+      status: null
     })
   }
 
   handleSubmit = () => {
     submitMapAnswer(this.state.answer)
-      .then(response => this.setState({response}))
+      .then(response => this.setState({
+        response: response.result,
+        status: response.status
+      }))
   }
 
   componentDidMount = () => {
@@ -132,7 +146,7 @@ class MapStream extends Component {
   render() {
     if(this.state.loading) return <Loading />
 
-    let {code, answer, response} = this.state
+    let {code, answer, response, status} = this.state
     return (
       <div>
         <Paragraph>
@@ -145,7 +159,15 @@ class MapStream extends Component {
             <Textarea name='answer' value={answer} onChange={this.handleChange} />
           </TitleWrapper>
           <TitleWrapper>
-            <Title>Response</Title>
+            <Title>
+              {status && status === 'SUCCESS' && (
+                <CheckCircle color='#8BC34A' size={36} style={styles.icon} />
+              )}
+              {status && status !== 'SUCCESS' && (
+                <Cancel color='#B71C1C' size={36} style={styles.icon} />
+              )}
+              Response
+            </Title>
             <Response>{response}</Response>
           </TitleWrapper>
         </AnswerWrapper>

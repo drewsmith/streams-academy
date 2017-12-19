@@ -15,5 +15,6 @@ export const submitAnswer = (type, answer) => {
     headers: { 'Content-Type': 'text/plain' },
     method: 'POST',
     body: answer
-  }).then(response => response.text())
+  })
+  .then(response => response.json())
 }
