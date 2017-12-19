@@ -10,7 +10,7 @@ import {
   FlexCol,
   Container,
   Title,
-  Paragraph,
+  P,
   Highlight
 } from '../utils/common'
 
@@ -149,9 +149,9 @@ class MapStream extends Component {
     let {code, answer, response, status} = this.state
     return (
       <div>
-        <Paragraph>
+        <P>
           Map is a thing bro. <Highlight>.map</Highlight> does stuff.
-        </Paragraph>
+        </P>
         <CodeBlock code={code} />
         <AnswerWrapper>
           <TitleWrapper>

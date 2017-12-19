@@ -29,7 +29,21 @@ export const Title = styled.h2`
   margin: 0;
 `
 
-export const Paragraph = styled.p`
+export const Subtitle = styled.h3`
+  font-weight: 100;
+  font-size: 32px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, .75);
+  font-family: 'Amatic SC', sans-serif;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0;
+`
+
+export const A = styled.a`
+  color: #bdbdbd;
+`
+
+export const P = styled.p`
   font-size: 1em;
   margin: 20px;
   line-height: 1.15em;

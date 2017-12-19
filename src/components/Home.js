@@ -1,7 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { FlexCol, Container } from '../utils/common'
+import {
+  FlexCol,
+  Container,
+  Subtitle,
+  P,
+  A
+} from '../utils/common'
 
 const Button = styled.div`
   background: #8BC34A;
@@ -34,8 +40,13 @@ const ButtonWrapper = styled.div`
 
 const Home = () => (
   <Wrapper>
+    <Subtitle>Streams</Subtitle>
     <Container>
-      Under Construction
+      The <A href='https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html' target='_blank'>streams</A> API was introduced in Java 8.
+    </Container>
+    <Subtitle>Functional Programming</Subtitle>
+    <Container>
+      Is my jam
     </Container>
     <ButtonWrapper>
       <Button>
