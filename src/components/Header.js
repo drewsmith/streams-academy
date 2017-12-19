@@ -1,15 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { FlexRow } from '../utils/common'
 import { Link } from 'react-router-dom'
 
 import Menu from 'react-icons/lib/md/menu'
 
-const Wrapper = styled.div`
+const Wrapper = styled(FlexRow)`
   padding: 20px;
   color: #FFFFFF;
-  display: flex;
-  flex-direction: row;
   justify-content: flex-start;
 `
 

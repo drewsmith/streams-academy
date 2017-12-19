@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { FlexRow, FlexCol } from '../utils/common'
 import { Link } from 'react-router-dom'
 
 import Cancel from 'react-icons/lib/md/cancel'
 
-const Nav = styled.div`
-  display: flex;
-  flex-direction: column;
+const Nav = styled(FlexCol)`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -18,9 +17,7 @@ const Nav = styled.div`
   animation: 0.5s ease-out 0s 1 toggleMenu;
 `
 
-const CloseWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
+const CloseWrapper = styled(FlexRow)`
   justify-content: flex-end;
   align-items: flex-end;
   padding: 10px;

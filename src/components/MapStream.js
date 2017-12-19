@@ -2,7 +2,14 @@ import React, { Component } from 'react'
 
 import styled from 'styled-components'
 
-import { FlexRow, FlexCol, Container } from '../utils/common'
+import {
+  FlexRow,
+  FlexCol,
+  Container,
+  Title,
+  Paragraph,
+  Highlight
+} from '../utils/common'
 
 import CodeBlock from './CodeBlock'
 import Spinner from 'react-icons/lib/fa/spinner'
@@ -29,7 +36,6 @@ const Textarea = styled.textarea`
 
 const AnswerWrapper = styled(FlexRow)`
   align-content: stretch;
-  margin: 20px;
 `
 const ActionWrapper = styled(FlexRow)`
   align-items: center;
@@ -72,16 +78,6 @@ const Reset = styled(Button)`
 const TitleWrapper = styled(FlexCol)`
   justify-content: stretch;
   flex: 1;
-  h2 {
-    font-size: .9em;
-    font-weight: 100;
-    font-size: 48px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, .75);
-    font-family: 'Amatic SC', sans-serif;
-    text-align: center;
-    color: #FFFFFF;
-    margin: 0;
-  }
 `
 
 const Response = styled(Container)`
@@ -121,7 +117,8 @@ class MapStream extends Component {
   }
 
   handleSubmit = () => {
-    submitMapAnswer(this.state.answer).then(response => this.setState({response}))
+    submitMapAnswer(this.state.answer)
+      .then(response => this.setState({response}))
   }
 
   componentDidMount = () => {
@@ -131,20 +128,24 @@ class MapStream extends Component {
       loading: false
     }))
   }
+
   render() {
     if(this.state.loading) return <Loading />
 
     let {code, answer, response} = this.state
     return (
       <div>
+        <Paragraph>
+          Map is a thing bro. <Highlight>.map</Highlight> does stuff.
+        </Paragraph>
         <CodeBlock code={code} />
         <AnswerWrapper>
           <TitleWrapper>
-            <h2>Answer</h2>
+            <Title>Answer</Title>
             <Textarea name='answer' value={answer} onChange={this.handleChange} />
           </TitleWrapper>
           <TitleWrapper>
-            <h2>Response</h2>
+            <Title>Response</Title>
             <Response>{response}</Response>
           </TitleWrapper>
         </AnswerWrapper>

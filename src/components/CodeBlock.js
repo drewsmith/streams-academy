@@ -6,7 +6,6 @@ import { docco } from 'react-syntax-highlighter/styles/hljs'
 
 const Wrapper = styled.div`
   padding: 0 20px;
-  margin: 20px;
   border-radius: 10px;
 `
 
